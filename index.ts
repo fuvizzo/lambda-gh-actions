@@ -5,7 +5,7 @@ import {
 } from 'aws-lambda';
 import * as _ from 'lodash';
 
-const handler: Handler = async (
+export const handler: Handler = async (
   // eslint-disable-next-line no-unused-vars
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResultV2> => {
