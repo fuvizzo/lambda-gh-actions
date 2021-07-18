@@ -9,7 +9,7 @@ export const handler: Handler = async (
   // eslint-disable-next-line no-unused-vars
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResultV2> => {
-  const val = _.random(10);
+  const val = _.random(100);
   const response = {
     statusCode: 200,
     body: JSON.stringify(`This is random: ${val}`),
