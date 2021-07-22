@@ -2,7 +2,7 @@
   "name": "gh-actions-aws-lambda",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {     
     "start": "DEBUG=web-server nodemon -r dotenv/config src/dev/index.ts",
     "test:unit": "jest src/koa --coverage"
