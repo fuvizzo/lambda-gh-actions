@@ -1,7 +1,8 @@
 import { Handler } from 'aws-lambda';
-import serverless from 'aws-serverless-koa';
 
 import app from './src/koa';
+
+const serverless = require('aws-serverless-koa');
 
 const handler: Handler = serverless(app);
 
