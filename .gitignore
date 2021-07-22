@@ -2,3 +2,5 @@ node_modules
 dist
 deploy.zip
 .DS_Store
+.env
+coverage

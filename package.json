@@ -2,26 +2,48 @@
   "name": "gh-actions-aws-lambda",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "index.ts",
+  "scripts": {     
+    "start": "DEBUG=web-server nodemon -r dotenv/config src/dev/index.ts",
+    "test:unit": "jest src/koa --coverage"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.79",
+    "@types/debug": "^4.1.6",
+    "@types/faker": "^5.5.7",
+    "@types/jest": "^26.0.24",
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
     "@types/lodash": "^4.14.171",
     "@types/node": "^16.3.2",
+    "@types/nodemon": "^1.19.1",
+    "@types/sinon": "^10.0.2",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "@vercel/ncc": "^0.28.6",
-    "eslint": "^7.30.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
+    "faker": "^5.5.3",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "sinon": "^11.1.1",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   },
   "dependencies": {
     "aws-lambda": "^1.0.6",
+    "aws-serverless-koa": "^1.0.2",
+    "debug": "^4.3.2",
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0",
     "lodash": "^4.17.21"
   }
 }
