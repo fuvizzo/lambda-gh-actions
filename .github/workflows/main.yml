@@ -30,6 +30,6 @@ jobs:
           npm run
       - name: deploy
         run: |
-          npx ncc build src/index.ts
-          zip -j deploy.zip ./dist/*
+          npx ncc build src/index.ts -o dist/lambda
+          zip -j deploy.zip ./dist/lambda/*
           aws lambda update-function-code --function-name=lambda-gh-actions --zip-file=fileb://deploy.zip

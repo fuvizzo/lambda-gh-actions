@@ -14,10 +14,7 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
-      "cwd": "${workspaceFolder}",
-      "windows": {
-        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
-      }
+      "cwd": "${workspaceFolder}"
     },
     {
       "type": "node",
@@ -34,10 +31,8 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
-      "cwd": "${workspaceFolder}",
-      "windows": {
-        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
-      }
+      "cwd": "${workspaceFolder}"
+      
     },
     {
       "outputCapture": "std",
@@ -45,13 +40,27 @@
       "request": "launch",
       "name": "Launch nodemon",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nodemon",
-      "runtimeArgs": ["-r", "dotenv/config"],      
-      "restart": true,      
+      "runtimeArgs": ["-r", "dotenv/config"],
+      "restart": true,
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/dev/index.ts",
-      "sourceMaps": true,    
+      "preLaunchTask": "typescript",
+      "sourceMaps": true,
       "trace": "all",
-      "outFiles": ["${workspaceFolder}/build/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/local/**/*.js"]
+    },
+    {
+      "outputCapture": "std",
+      "type": "node",
+      "request": "attach",
+      "name": "Attach debbugger to SAM CLI",
+      "remoteRoot": "/var/task",
+      "port": 8001,
+      "outFiles": ["${workspaceFolder}/dist/local/**/*.js"],
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/dist/local",
+      "protocol": "inspector",
+      "stopOnEntry": false, 
     }
   ]
 }

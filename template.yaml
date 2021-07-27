@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AWS Lambda Node.js with typescript project
+
+Parameters:
+  API_UriSegment: 
+      Description: 'Some desc'
+      Type: 'String'
+      Default: API      
+
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      CodeUri: dist/lambda/
+      Runtime: nodejs14.x
+      Timeout: 300
+      Environment:
+        Variables:
+          ENVIRONMENT: "test"
+          API_ROOT_PATH: !Ref API_UriSegment
+      Events:
+        Base:
+          Type: Api
+          Properties:
+            Path:  "/API"  #!Sub '/${API_UriSegment}'
+            Method: get
+        SimpleGet:
+          Type: Api
+          Properties:  
+            Path: /API/{id} #!Sub '/${API_UriSegment}{id}'
+            Method: get
+       
