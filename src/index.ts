@@ -3,6 +3,6 @@ import serverless from 'aws-serverless-koa';
 
 import app from './koa';
 
-const handler: Handler = serverless(app);
+export const handler: Handler = serverless(app);
 
 export default handler;
