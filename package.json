@@ -23,6 +23,7 @@
     "@types/nodemon": "^1.19.1",
     "@types/sinon": "^10.0.2",
     "@types/supertest": "^2.0.11",
+    "@types/yamljs": "^0.2.31",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "@vercel/ncc": "^0.28.6",
@@ -45,6 +46,9 @@
     "aws-serverless-koa": "^1.0.2",
     "debug": "^4.3.2",
     "koa": "^2.13.1",
-    "koa-router": "^10.0.0"
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "koa2-swagger-ui": "^5.2.0",
+    "yamljs": "^0.3.0"
   }
 }
