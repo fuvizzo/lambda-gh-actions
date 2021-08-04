@@ -34,3 +34,5 @@ Refer to [this video tutorial](https://www.youtube.com/watch?v=UQiRhKgQ5X0)
 
  I created a specif IAM user called "aws-cli-user" I gave basic permissions to. 
  More precisely I created a custom permission policy called "lambda-aws-cli-policy" only capable to perform the "UpdateFunctionCode" and just on my a Lambda function "lambda-gh-actions". This allows me to invoke the "aws lambda update-function-code" in the main.yml and push the code to the S3 AWS bucket where the lambda code is stored.
+ 
+ 
