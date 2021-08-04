@@ -33,5 +33,6 @@ jobs:
       - name: deploy
         run: |
           npx ncc build src/index.ts -o dist/lambda
+          cp swagger.yaml dist/lambda/swagger.yaml
           zip -j deploy.zip ./dist/lambda/*
           aws lambda update-function-code --function-name=lambda-gh-actions --zip-file=fileb://deploy.zip
