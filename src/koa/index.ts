@@ -4,11 +4,9 @@ import Router from 'koa-router';
 
 import { koaSwagger, SwaggerOptions } from 'koa2-swagger-ui';
 import AppError from '../error/app-error';
-import pkJson from '../../package.json';
+import { dependencies } from '../../package.json';
 
-const {
-  dependencies: { 'swagger-ui': swaggerVersion },
-} = pkJson;
+const { 'swagger-ui': swaggerVersion } = dependencies;
 
 interface KoaSwaggerOptions extends SwaggerOptions {
   host?: string;
@@ -28,7 +26,7 @@ spec.basePath = `/${process.env.API_ROOT_PATH}`;
 
 app.use(
   koaSwagger({
-    swaggerVersion,
+    swaggerVersion: swaggerVersion.replace('^', ''),
     swaggerOptions: { spec },
   }),
 );
