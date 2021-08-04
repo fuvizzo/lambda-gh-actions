@@ -4,6 +4,11 @@ import Router from 'koa-router';
 
 import { koaSwagger, SwaggerOptions } from 'koa2-swagger-ui';
 import AppError from '../error/app-error';
+import pkJson from '../../package.json';
+
+const {
+  dependencies: { 'swagger-ui': swaggerVersion },
+} = pkJson;
 
 interface KoaSwaggerOptions extends SwaggerOptions {
   host?: string;
@@ -21,7 +26,12 @@ const spec: KoaSwaggerOptions = yamljs.load('./swagger.yaml');
 spec.host = process.env.HOST;
 spec.basePath = `/${process.env.API_ROOT_PATH}`;
 
-app.use(koaSwagger({ swaggerOptions: { spec } }));
+app.use(
+  koaSwagger({
+    swaggerVersion,
+    swaggerOptions: { spec },
+  }),
+);
 
 const userRouter = new Router({
   prefix: '/users',
