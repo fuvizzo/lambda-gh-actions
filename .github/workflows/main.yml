@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy_lambda:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -30,9 +30,10 @@ jobs:
       - name: run unit tests       
         run: |
           npm run
-      - name: deploy
+      - name: build
         run: |
           npx ncc build src/index.ts -o dist/lambda
           cp swagger.yaml dist/lambda/swagger.yaml
-          zip -j deploy.zip ./dist/lambda/*
-          aws lambda update-function-code --function-name=lambda-gh-actions --zip-file=fileb://deploy.zip
+      - name: update lambda
+        run: |
+          aws lambda update-function-code --function-name=pa-lambda-koa-webserver --s3-bucket=lambdas     
