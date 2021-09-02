@@ -16,12 +16,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Assume DEV Role
+        uses: youyo/awscredswrap@master
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
+          role_arn: arn:aws:iam::192461108232:role/SDC-Vxgateway
+          duration_seconds: 1200
+          role_session_name: dev
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'eu-central-1'
       - name: npm install
         env:
           CI: true
