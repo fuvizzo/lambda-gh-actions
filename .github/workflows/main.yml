@@ -38,6 +38,8 @@ jobs:
         run: |
           npx ncc build src/index.ts -o dist/lambda
           cp swagger.yaml dist/lambda/swagger.yaml
+      - name: Deploy to S3
+        run: aws s3 sync ./dist/lambda s3://dev-vxgateway-lambdas/
       - name: update lambda
         run: |
-          aws lambda update-function-code --function-name=pa-lambda-koa-webserver --s3-bucket=lambdas     
+          aws lambda update-function-code --function-name=pa-lambda-koa-webserver --s3-bucket=dev-vxgateway-lambdas     
